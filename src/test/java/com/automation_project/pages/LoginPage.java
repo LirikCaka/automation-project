@@ -12,23 +12,24 @@ public class LoginPage {
         PageFactory.initElements(Driver.getDriver(), this);
     }
 
-    @FindBy(id="prependedInput")
+    @FindBy(name = "USER_LOGIN")
     public WebElement userName;
 
 
 
-    @FindBy(id="prependedInput2")
+    @FindBy(name="USER_PASSWORD")
     public WebElement password;
 
-    @FindBy(name = "_submit")
-    public WebElement submit;
+    @FindBy(xpath = "//div[@class='errortext']")
+
+    public WebElement errorMessage;
+
+    @FindBy(xpath = "//input[@type='submit']")
+
+    public WebElement loginButton;
 
 
-    public void login(String userNameStr, String passwordStr) {
-        userName.sendKeys(userNameStr);
-        password.sendKeys(passwordStr);
-        submit.click();
-        // verification that we logged
-    }
+
+
 
 }
