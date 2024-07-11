@@ -1,6 +1,8 @@
 package com.automation_project.pages;
 
 
+import com.automation_project.utilities.BrowserUtils;
+import com.automation_project.utilities.ConfigurationReader;
 import com.automation_project.utilities.Driver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -12,21 +14,44 @@ public class LoginPage {
         PageFactory.initElements(Driver.getDriver(), this);
     }
 
-    @FindBy(name = "USER_LOGIN")
-    public WebElement userName;
 
+    @FindBy(xpath = "//label[.='Remember me on this computer']")
+    public WebElement label_rememberMe;
 
-
-    @FindBy(name="USER_PASSWORD")
-    public WebElement password;
-
+    @FindBy(xpath = "//input[@id='USER_REMEMBER']")
+    public WebElement checkBox_rememberMe;
     @FindBy(xpath = "//div[@class='errortext']")
+    public WebElement errMessage;
 
-    public WebElement errorMessage;
+    @FindBy(xpath = "//input[@name='USER_LOGIN']")
+    public WebElement txtBox_userName;
 
-    @FindBy(xpath = "//input[@type='submit']")
+    @FindBy(xpath = "//input[@name='USER_PASSWORD']")
+    public WebElement txtBox_password;
 
-    public WebElement loginButton;
+    @FindBy(xpath = "//input[@value='Log In']")
+    public WebElement btn_login;
+
+
+    public void login(String username, String password) {
+        txtBox_userName.sendKeys(username);
+        txtBox_password.sendKeys(password);
+        BrowserUtils.sleep(3);
+        btn_login.click();
+    }
+
+
+    public void login(String userType) {
+
+        String username = ConfigurationReader.getProperty(userType + "_username");
+        String password = ConfigurationReader.getProperty(userType + "_password");
+        txtBox_userName.sendKeys(username);
+        txtBox_password.sendKeys(password);
+        btn_login.click();
+
+    }
+
+
 
 
 
