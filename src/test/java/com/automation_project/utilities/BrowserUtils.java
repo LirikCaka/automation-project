@@ -485,4 +485,16 @@ public class BrowserUtils {
     }
 
 
+    public static String getAttributeValue(WebElement element, String type) {
+        String attributeValue = "";
+        try {
+            attributeValue = element.getAttribute(type);
+            if (attributeValue == null) {
+                attributeValue = "";
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return attributeValue;
+    }
 }
