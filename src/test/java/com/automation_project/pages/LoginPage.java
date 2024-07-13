@@ -22,6 +22,8 @@ public class LoginPage {
     public WebElement checkBox_rememberMe;
     @FindBy(xpath = "//div[@class='errortext']")
     public WebElement errMessage;
+    @FindBy(xpath = "//div[@class='errortext']")
+    public WebElement actualMassage;
 
     @FindBy(xpath = "//input[@name='USER_LOGIN']")
     public WebElement txtBox_userName;
