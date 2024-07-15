@@ -35,7 +35,6 @@ Feature: Users should be able to login
   Scenario: Verify that the password is in bullet signs by default.
     Then user should be able to see password is in bullet signs by default
 
-@error
   Scenario Outline: Verify that the "Please fill out this field" error message is displayed if the password or username is empty.
     When user is logged with username as "<username>" and password as "<password>"
     Then user should be able to see error  "Please fill out this field" message
