@@ -6,6 +6,7 @@ import com.automation_project.utilities.Driver;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.junit.Assert;
 
 public class MessageStepDefs {
 
@@ -15,35 +16,66 @@ public class MessageStepDefs {
     public void user_clicks_on_message_tab() {
         messagePage.messageBtn.click();
     }
-
-    @Then("user should see the message table open")
-    public void user_should_see_the_message_table_open() {
-        messagePage.iframe.isDisplayed();
-        BrowserUtils.sleep(3);
-    }
-    @Then("all employees should be set by default")
-    public void allEmployeesShouldBeSetByDefault() {
-        messagePage.employeesBtnText.isDisplayed();
-    }
-
     @Then("user should be able to send message")
     public void userShouldBeAbleToSendMessage() {
+        Driver.getDriver().switchTo().frame(messagePage.iframe);
+        messagePage.messageBox.sendKeys("Hello World");
+        BrowserUtils.sleep(2);
+        Driver.getDriver().switchTo().defaultContent();
         messagePage.sendBtn.click();
 
     }
 
-    @Then("user should se error message if title is not specified")
-    public void userShouldSeErrorMessageIfTitleIsNotSpecified() {
+    @Then("user clicks the Send button")
+    public void userClicksTheSendButton() {
+        messagePage.sendBtn.click();
+        BrowserUtils.sleep(2);
+    }
+    @Then("Then user should see error message displayed {string}")
+    public void thenUserShouldSeErrorMessageDisplayed(String errorMessage) {
+
         messagePage.titleError.isDisplayed();
+
+        String actualErrorMessage = messagePage.titleError.getText();
+
+        Assert.assertEquals(errorMessage, actualErrorMessage);
+    }
+    @Then("user enter message")
+    public void userEnterMessage() {
+        Driver.getDriver().switchTo().frame(messagePage.iframe);
+        messagePage.messageBox.sendKeys("Hello World");
+        BrowserUtils.sleep(2);
+        Driver.getDriver().switchTo().defaultContent();
+
     }
 
-    @Then("user should see error if recipient is not selected")
-    public void userShouldSeeErrorIfRecipientIsNotSelected() {
-        BrowserUtils.sleep(2);
-        messagePage.employeesBtn.click();
-        BrowserUtils.sleep(2);
-        messagePage.sendBtn.click();
-        BrowserUtils.sleep(2);
+
+    @Then("all employees should be set by default")
+    public void allEmployeesShouldBeSetByDefault() {
+        messagePage.messageBtn.click();
         messagePage.employeesBtnText.isDisplayed();
     }
+    @Then("user leave recipient blank")
+    public void userLeaveRecipientBlank() {
+        messagePage.employeesBtn.click();
+    }
+    @Then("Then user should se error message {string}")
+    public void thenUserShouldSeErrorMessage(String employeesError) {
+        messagePage.specifyPersonError.isDisplayed();
+
+        String actualEmployeesMessage = messagePage.specifyPersonError.getText();
+
+        Assert.assertEquals(employeesError, actualEmployeesMessage);
+    }
+
+    @Then("user should be able to cancel message")
+    public void userShouldBeAbleToCancelMessage() {
+        Driver.getDriver().switchTo().frame(messagePage.iframe);
+        messagePage.messageBox.sendKeys("Hello World");
+        BrowserUtils.sleep(2);
+        Driver.getDriver().switchTo().defaultContent();
+        messagePage.cancelBtn.click();
+    }
+
+
 }

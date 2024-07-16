@@ -7,20 +7,17 @@ import org.openqa.selenium.support.PageFactory;
 
 public class MessagePage {
 
-    public MessagePage(){
+    public MessagePage() {
         PageFactory.initElements(Driver.getDriver(), this);
     }
 
 
-@FindBy(xpath = "//span[.='Message']")
+    @FindBy(xpath = "//span[.='Message']")
 
     public WebElement messageBtn;
 
-@FindBy(xpath = "//iframe[@class='bx-editor-iframe']")
 
-    public WebElement iframe;
-
-@FindBy(xpath = "//button[@id='blog-submit-button-save']")
+    @FindBy(xpath = "//button[@id='blog-submit-button-save']")
 
     public WebElement sendBtn;
 
@@ -43,8 +40,12 @@ public class MessagePage {
 
     public WebElement specifyPersonError;
 
-    @FindBy(xpath = "//div[@class='feed-add-post-text']")
-    public WebElement iframeBody;
+    @FindBy(xpath = "//iframe[@class='bx-editor-iframe']")
+
+    public WebElement iframe;
+
+    @FindBy(css = "body[contenteditable='true']")
+    public WebElement messageBox;
 
     @FindBy(xpath = "//span[@class='feed-add-post-del-but']")
 
