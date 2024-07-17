@@ -31,7 +31,6 @@ public class LoginStepDefs {
         BrowserUtils.verifyTitleContains(title);
     }
 
-
     @When("user logged in with username as {string} and password as {string}")
     public void userLoggedInWithUsernameAsAndPasswordAs(String username, String password) {
 

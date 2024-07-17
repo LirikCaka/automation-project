@@ -13,7 +13,7 @@ Feature: Verify the "log out" functionality
   @CRM-1
   Scenario Outline: Verify profile name functionality
     When user logs in as "<userType>"
-    And user clicks profile dropdown
+    And user clicks on profile dropdown
     And user clicks "Log out" option from profile option
     Then user should be able to see "Authorization" as page title
     Examples:
@@ -22,8 +22,7 @@ Feature: Verify the "log out" functionality
       | helpdesk  |
       | marketing |
 
-    And user click on profile name
-    Then user click log out button
+
 
   @CRM-2
   Scenario Outline: Verify profile name functionality

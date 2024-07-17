@@ -1,8 +1,5 @@
 package com.automation_project.step_definitions;
 
-
-
-
 import com.automation_project.utilities.BrowserUtils;
 import com.automation_project.utilities.ConfigurationReader;
 import com.automation_project.utilities.Driver;
@@ -46,7 +43,6 @@ public class Hooks {
             scenario.attach(screenshot, "image/png", scenario.getName());
 
         }
-
 
 
         BrowserUtils.sleep(2);
