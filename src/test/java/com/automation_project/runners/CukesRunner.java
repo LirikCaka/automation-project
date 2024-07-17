@@ -15,7 +15,7 @@ import org.junit.runner.RunWith;
         features = "src/test/resources/features",
         glue = "com/automation_project/step_definitions",
         dryRun = false,
-        tags = "@B34G4-136",
+        tags = "@B34G4-129",
         publish = true
 
         //generating a report with public link
