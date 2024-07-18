@@ -27,11 +27,21 @@ public class FileUploadStepDefs {
     }
     @Then("user should be able to see {string} in the uploaded files")
     public void user_should_be_able_to_see_in_the_uploaded_files(String fileName) {
+        if (fileName.contains("png") || fileName.contains("jpg")){
+            String actualSource = activityStreamPage.getPictureSrcFromMessage();
+            Assert.assertTrue(actualSource.contains(fileName.substring(0,fileName.indexOf("."))));
+            System.out.println(actualSource);
+        }else {
+            String actualMessage = activityStreamPage.getMessageContent();
+            Assert.assertTrue(actualMessage.contains(fileName));
+        }
+
+        /*
         BrowserUtils.sleep(3);
         String uploadedFileText = activityStreamPage.uploadFileBtn.getText();
         System.out.println("uploadFileText = " + uploadedFileText);
         Assert.assertTrue(uploadedFileText.contains(fileName.substring(0,fileName.indexOf("."))));
-
+*/
     }
 
 
@@ -54,9 +64,6 @@ public class FileUploadStepDefs {
 
     }
 
-    @When("user navigates to the Activity Stream page")
-    public void userNavigatesToTheActivityStreamPage() {
-    }
 
 
 }
