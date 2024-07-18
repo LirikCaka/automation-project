@@ -1,6 +1,7 @@
 package com.automation_project.step_definitions;
 
 import com.automation_project.pages.ActivityStreamPage;
+import com.automation_project.utilities.BrowserUtils;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -26,14 +27,13 @@ public class FileUploadStepDefs {
     }
     @Then("user should be able to see {string} in the uploaded files")
     public void user_should_be_able_to_see_in_the_uploaded_files(String fileName) {
-        waitFor(3);
+        BrowserUtils.sleep(3);
         String uploadedFileText = activityStreamPage.uploadFileBtn.getText();
         System.out.println("uploadFileText = " + uploadedFileText);
         Assert.assertTrue(uploadedFileText.contains(fileName.substring(0,fileName.indexOf("."))));
 
     }
-    private void waitFor(int i) {
-    }
+
 
     @And("user clicks Insert text with exact class {string}")
     public void userClicksInsertTextWithExactClass(String arg0) {

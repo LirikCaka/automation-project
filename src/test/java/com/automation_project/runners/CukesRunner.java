@@ -14,7 +14,7 @@ import org.junit.runner.RunWith;
         },
         features = "src/test/resources/features",
         glue = "com/automation_project/step_definitions",
-        dryRun = true,
+        dryRun = false,
         tags = "@B34G4-129",
         publish = true
 
