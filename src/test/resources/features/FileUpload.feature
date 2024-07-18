@@ -10,8 +10,8 @@ Feature:As a user, I should be able to upload files and pictures as messages.
     And user upload the files "<fileType>"
     Then user should be able to see "<fileType>" in the uploaded files
     Examples:
-      | userType  | fileType      |
-      | hr        | TestDocx.docx |
+      | userType | fileType     |
+      | hr       | TestJpeg.jpg |
 
   Scenario Outline: Verify that the <userType> can insert the <fileType>into the text.
     Given user logs in as "<userType>"

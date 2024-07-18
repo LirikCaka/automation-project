@@ -6,14 +6,14 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class ActivityStreamPage  {
+public class ActivityStreamPage {
 
     public ActivityStreamPage() {
 
         PageFactory.initElements(Driver.getDriver(), this);
     }
 
-    @FindBy (id = "feed-add-post-form-tab-message")
+    @FindBy(id = "feed-add-post-form-tab-message")
     public WebElement messageBtn;
 
     @FindBy(id = "bx-b-uploadfile-blogPostForm")
@@ -37,12 +37,14 @@ public class ActivityStreamPage  {
     public static void switchToFrame(WebElement frameElement) {
         Driver.getDriver().switchTo().frame(frameElement);
     }
+
     public static void switchToDefaultContent() {
         Driver.getDriver().switchTo().defaultContent();
     }
+
     public String getMessageContent() {
         switchToFrame(messageBoxFrame);
-        String message=messageBox.getText();
+        String message = messageBox.getText();
         switchToDefaultContent();
         return message;
     }
@@ -50,19 +52,10 @@ public class ActivityStreamPage  {
     public String getPictureSrcFromMessage() {
         switchToFrame(messageBoxFrame);
         BrowserUtils.waitFor(5);
-        String source=picture.getAttribute("src");
+        String source = picture.getAttribute("test");
         switchToDefaultContent();
         return source;
     }
-    //public String getPictureSrcFromMessage() {
-
-      //  public String getMessageContent (int indexOfMessage){
-           // return messages.get(indexOfMessage - 1).getText();
-        }
-
-
-
-//C:\Users\arzug\Downloads\Portal.yeni.png
-
+}
 
 
