@@ -22,7 +22,8 @@ public class AddLinkStepDefs {
 
     @Then("user attaches a link to the specified text")
     public void userAttachesALinkToTheSpecifiedText() {
-        addLinkPage.linkInput.sendKeys("url");
+
+        addLinkPage.linkInput.sendKeys("https://cydeo.com/");
 
         BrowserUtils.sleep(2);
         Driver.getDriver().switchTo().defaultContent();
@@ -32,20 +33,28 @@ public class AddLinkStepDefs {
 
     @Given("user added a link to the message")
     public void userAddedALinkToTheMessage() {
+        addLinkPage.addLink.sendKeys("\"https://cydeo.com/\"");
+
 
     }
+
     @Then("user saved a link")
     public void userSavedALink() {
+        addLinkPage.saveLink.click();
     }
 
     @Then("user should be navigated to the correct url")
     public void userShouldBeNavigatedToTheCorrectUrl() {
         addLinkPage.correctUrl.click();
+
+        String linkUrl = addLinkPage.saveLink.getText();
+        if (linkUrl.equals("\"https://cydeo.com/\"")) {
+            System.out.println("User navigate to the correct URL");
+        } else {
+            System.out.println("User does not navigate to the correct URL");
+        }
     }
 
 
-    @Then("the link should open in a new tab")
-    public void theLinkShouldOpenInANewTab() {
 
-    }
 }
