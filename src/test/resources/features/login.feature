@@ -4,7 +4,7 @@ Feature: Users should be able to login
   Background: User is already in the log in page
     Given the user is on the login page
 
-@B34G4-144
+  @B34G4-144
   Scenario Outline: Verify that <userType> user can log in with valid credentials and land on the home page after
   successful login.
     When user logs in as "<userType>"
