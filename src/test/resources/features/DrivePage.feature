@@ -19,6 +19,5 @@ Feature: Drive Page
     Examples:
       | userType  |
       | hr        |
-
-      #| helpdesk  |
-      #| marketing |
+      | helpdesk  |
+      | marketing |

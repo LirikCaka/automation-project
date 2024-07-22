@@ -1,9 +1,10 @@
+@B34G4-84
 Feature: Users should be able to send message
 
   Background: User is already in the log in page
     Given the user is on the login page
 
-  @ac1
+  @B34G4-147
   Scenario Outline: Verify that <userType> user can log in with valid credentials and land on the home page after
   successful login
     When user logs in as "<userType>"
@@ -16,7 +17,7 @@ Feature: Users should be able to send message
       | helpdesk  |
       | marketing |
 
-  @ac2
+  @B34G4-148
   Scenario Outline: Verify that <userType> will see the error message if title is blank
     When user logs in as "<userType>"
     Then user clicks on message tab
@@ -30,7 +31,7 @@ Feature: Users should be able to send message
       | helpdesk  |
       | marketing |
 
-  @ac3
+  @B34G4-150
   Scenario Outline: Verify that <userType> user will se the error message if no recipient is selected
     When user logs in as "<userType>"
     Then user clicks on message tab
@@ -45,7 +46,7 @@ Feature: Users should be able to send message
       | helpdesk  |
       | marketing |
 
-  @ac4
+  @B34G4-149
 
   Scenario Outline: Verify that <userType> will see all employees set by default
     When user logs in as "<userType>"
@@ -59,7 +60,7 @@ Feature: Users should be able to send message
       | marketing |
 
 
-    @ac5
+    @B34G4-151
     Scenario Outline: Verify that <userType> user can cancel message
       When user logs in as "<userType>"
       Then user clicks on message tab
