@@ -9,14 +9,14 @@ Feature: Company page
       | Official Information |
       | Our Life             |
       | About Company        |
-      | Photo Company        |
+      | Photo Gallery        |
       | Video                |
       | Career               |
       | Business News(RSS)   |
       | More                 |
 
     Examples:
-      | userType |
-      | hr       |
+      | userType  |
+      | hr        |
       | helpdesk  |
       | marketing |
