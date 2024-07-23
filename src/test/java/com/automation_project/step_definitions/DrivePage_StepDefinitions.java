@@ -6,6 +6,7 @@ import com.automation_project.pages.LoginPage;
 import com.automation_project.utilities.Driver;
 import io.cucumber.java.en.Then;
 import org.junit.Assert;
+import org.openqa.selenium.WebElement;
 
 import java.lang.reflect.Array;
 import java.util.Arrays;
@@ -13,40 +14,29 @@ import java.util.List;
 
 public class DrivePage_StepDefinitions {
 
-    DrivePage drivePage = new DrivePage();
+    DrivePage page = new DrivePage();
 
     @Then("user clicks on Drive button")
     public void user_clicks_on_drive_button() {
 
-        drivePage.DriveButton.click();
+        page.DriveButton.click();
 
     }
     @Then("user can see the following modules on the Drive page.")
-    public void user_can_see_the_following_modules_on_the_drive_page(List<String> modules){
-        String actualModule = drivePage.MyDriveButton.getText();
-        String expected = modules.get(0);
-        Assert.assertEquals(actualModule,expected);
+    public void user_can_see_the_following_modules_on_the_company_page_shown_as_design(List<String> modules) {
+        List<WebElement> elements = Arrays.asList(
+                page.MyDriveButton,
+                page.AllDocumentsButton,
+                page.CompanyButton,
+                page.SalesAndManagementButton,
+                page.TopManagementsButton,
+                page.DriveCleanupButton
+        );
 
-        actualModule = drivePage.AllDocumentsButton.getText();
-        expected = modules.get(1);
-        Assert.assertEquals(actualModule,expected);
-
-        actualModule = drivePage.CompanyButton.getText();
-        expected = modules.get(2);
-        Assert.assertEquals(actualModule,expected);
-
-        actualModule = drivePage.SalesAndManagementButton.getText();
-        expected = modules.get(3);
-        Assert.assertEquals(actualModule,expected);
-
-        actualModule = drivePage.TopManagementsButton.getText();
-        expected = modules.get(4);
-        Assert.assertEquals(actualModule,expected);
-
-        actualModule = drivePage.DriveCleanupButton.getText();
-        expected = modules.get(5);
-        Assert.assertEquals(actualModule,expected);
-
-
+        for (int i = 0; i < elements.size(); i++) {
+            String actualModule = elements.get(i).getText();
+            String expected = modules.get(i);
+            Assert.assertEquals("Module at index " + i + " does not match", actualModule, expected);
+        }
     }
 }
